@@ -26,7 +26,7 @@ SECRET_KEY = 'v-u^-*#gt9ec*0*e4jvp5s*%k_rr8u(^@@er9j^ld=3+fk2=sy'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*',]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['*',]
 INSTALLED_APPS = [
     'accounts',
     'markets',
+    'products',
     'corsheaders',
     'rest_framework',
     'django.contrib.admin',
@@ -52,8 +53,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
-
+CORS_ORIGIN_ALLOW_ALL = True
 ROOT_URLCONF = 'icpserver.urls'
 
 TEMPLATES = [
@@ -104,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
