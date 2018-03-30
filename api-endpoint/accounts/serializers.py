@@ -28,21 +28,9 @@ class CreateUserSerializer(serializers.ModelSerializer):
         return validated_data
 
 
-class UserChangePasswordSerializer(serializers.ModelSerializer):
-    new_password = serializers.CharField(label="New Password")
-
-    class Meta:
-        model = User
-        fields = ["username", "password", "new_password"]
-
-    def create(self, validated_data):
-        username = validated_data['username']
-        password = validated_data['password']
-        new_password = validated_data["new_password"]
-        user = None
-        user = User.objects.get(username=username)
-        if user.check_password(password):
-            user.set_password(new_password)
-            user.save()
-        else:
-            return response.Response(validated_data,status=status.HTTP_406_NOT_ACCEPTABLE)
+class ChangePasswordSerializer(serializers.Serializer):
+    """
+    Serializer for password change endpoint.
+    """
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)
