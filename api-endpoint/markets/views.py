@@ -5,5 +5,4 @@ from rest_framework import generics,permissions
 
 class CreateMarketView(generics.CreateAPIView):
     serializer_class = CreateMarketSerializer
-    permission_classes = (permissions.IsAuthenticated)
-
+    permission_classes = (permissions.IsAuthenticated,)
